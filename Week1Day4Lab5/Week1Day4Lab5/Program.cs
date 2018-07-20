@@ -20,10 +20,6 @@ namespace Week1Day4Lab5
                 int userInt;
                 userInt = Validate();
                 
-                
-
-
-
                 //Display the factorial of the number
                 Console.WriteLine(FactorialSet(userInt)); 
       
@@ -52,16 +48,14 @@ namespace Week1Day4Lab5
         }
 
         //long type (Parse.Long)
-        static long FactorialSet(int UserInt)
-        //Use a for loop
+        static long FactorialSet(long i)
+        //Use recursion
         {
-            long PrevProduct = 1;
+            if (i == 1) return i;
+
+            return FactorialSet(i-1) * i; 
             
-            for (int i = 1; i <= UserInt; ++i)
-            {
-            PrevProduct = i * (PrevProduct); 
-            }
-            return PrevProduct;
+            
         }
 
         static int Validate()
