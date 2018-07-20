@@ -8,38 +8,74 @@ namespace Week1Day4Lab5
 {
     class Program
     {
-        int userInt;
         static void Main(string[] args)
         {
-            //Prompt user for 1 to 10 int
-            Console.WriteLine("Numbers one to ten, pwease");
-            var UserInput = Console.ReadLine();         
+            var Repeat = true;
+            while (Repeat)
+            {
 
-            //Use a for loop
-            int.TryParse(UserInput, out int UserInt);
+                //Prompt user for 1 to 10 int
+                Console.WriteLine("I can give you Factowiawows!");
+                Console.WriteLine("\n Numbers one to ten, pwease");
+                int userInt;
+                userInt = Validate();
+                
+                
 
-            //Display the factorial of the number
-            Console.WriteLine(FactorialSet(UserInt));
 
-            //Prompt for continue (y/n)
-            Console.WriteLine("Contin uWu ? yiss or noooooo pwease");
 
-            Console.ReadLine();
-            //long type (Parse.Long)
+                //Display the factorial of the number
+                Console.WriteLine(FactorialSet(userInt)); 
+      
+                Repeat = Retry();
+            }
         }
+        //Prompt for continue (y/n)
+        static bool Retry()
+        {
+            Console.WriteLine("\n Contin uWu ? yiss or noooooo pwease");
+            String Answer = Console.ReadLine().ToUpper();
+
+            if (Answer == "Y" || Answer == "YES" || Answer == "YISS")
+            {
+                return true;
+            }
+            else if (Answer == "N" || Answer == "NO" || Answer == "NOOOOOO")
+            {
+                return false;
+            }
+            else
+            {
+                Console.WriteLine("\n I donut no that, pwease input y or n");
+                return Retry();
+            }
+        }
+
+        //long type (Parse.Long)
         static long FactorialSet(int UserInt)
-        
+        //Use a for loop
         {
             long PrevProduct = 1;
             
             for (int i = 1; i <= UserInt; ++i)
             {
-                PrevProduct = i * (PrevProduct);
-                
+            PrevProduct = i * (PrevProduct); 
             }
             return PrevProduct;
+        }
 
-
+        static int Validate()
+        {
+            String UserInput = Console.ReadLine();
+            if (Int32.TryParse(UserInput, out int result) && result > 0 && result < 10)
+            {
+                return result;
+            }
+            else
+            {
+                Console.WriteLine("\n Nice twy, it's gotta bee inside 1 and 10");
+                return Validate();
+            }
         }
     }
 }
